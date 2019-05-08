@@ -12,4 +12,4 @@ import { RouterModule } from '@angular/router';
     HeaderComponent
   ]
 })
-export class HeaderModule { }
+export class SharedModule { }
