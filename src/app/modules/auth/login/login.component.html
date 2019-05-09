@@ -6,7 +6,7 @@
     <p>
       Value: {{ email.value }}
     </p>
-    <button class="button" (click)="register(email.value, password.value)">LogIn</button>
+    <button routerLink='/' class="button" (click)="logIn(email.value, password.value)">Login</button>
     <a routerLink='/auth/register'>Register</a>
 
   </div>

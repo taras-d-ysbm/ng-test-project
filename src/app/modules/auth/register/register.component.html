@@ -1,3 +1,9 @@
-<p>
-  register works!
-</p>
+<div class="grid-x">
+  <div class="cell small-3 small-offset-4">
+    <h1>Register</h1>
+    <input type="email" [formControl]="email" placeholder="Email"><input type="password" [formControl]="password"
+      placeholder="Password">
+    <button class="button" (click)="register(email.value, password.value)">Register</button>
+
+  </div>
+</div>

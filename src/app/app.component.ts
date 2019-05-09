@@ -18,7 +18,4 @@ export class AppComponent {
 
 
 
-  logIn() {
-    this.loggedIn = this.authService.isLogged
-  }
 }

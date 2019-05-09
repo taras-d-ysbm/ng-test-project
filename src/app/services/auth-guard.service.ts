@@ -10,12 +10,14 @@ export class AuthGuardService {
   constructor(public auth: AuthService, public router: Router) { }
 
   canActivate(): boolean {
-    if (!this.auth.isLogged) {
+    if (!localStorage.getItem('token')) {
       this.router.navigate(['auth/login']);
       return false;
     }
 
     return true;
   }
+
+
 
 }

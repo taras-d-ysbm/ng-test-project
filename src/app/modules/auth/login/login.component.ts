@@ -14,12 +14,11 @@ export class LoginComponent implements OnInit {
 
 
   constructor(private authService: AuthService) { }
-  logIn() {
-    this.authService.logIn()
+  logIn(email, password) {
+    this.authService.logIn(email, password)
+
   }
-  register(email, password) {
-    this.authService.register(email, password)
-  }
+
   ngOnInit() {
   }
 
