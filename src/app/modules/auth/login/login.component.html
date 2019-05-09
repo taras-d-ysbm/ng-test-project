@@ -1,0 +1,13 @@
+<div class="grid-x">
+  <div class="cell small-3 small-offset-4">
+    <h1>Login</h1>
+    <input type="email" [formControl]="email" placeholder="Email"><input type="password" [formControl]="password"
+      placeholder="Password">
+    <p>
+      Value: {{ email.value }}
+    </p>
+    <button class="button" (click)="register(email.value, password.value)">LogIn</button>
+    <a routerLink='/auth/register'>Register</a>
+
+  </div>
+</div>

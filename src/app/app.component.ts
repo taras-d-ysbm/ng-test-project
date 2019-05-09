@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { AuthService } from './services/auth.service'
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ng-project';
+
+  $loggedIn: Observable<boolean>
+  $loogedInSubscription: Subscription
+  loggedIn: boolean
+
+  constructor(private authService: AuthService) { }
+
+
+
+  logIn() {
+    this.loggedIn = this.authService.isLogged
+  }
 }
