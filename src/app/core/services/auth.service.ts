@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-// import { HttpClient } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
-import { Router, RouterModule, CanActivate } from '@angular/router';
+import { Router } from '@angular/router';
+
+import { Observable, of } from 'rxjs'
+import { LocalStorageService } from './local-storage.service'
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  isLogged: boolean = false
-  constructor(private http: HttpClient, public router: Router) { }
+
+  constructor(private http: HttpClient, public router: Router, private storageService: LocalStorageService) { }
 
   logIn(username: string, password: string) {
     return this.http.post("https://reqres.in/api/register",
@@ -23,14 +23,12 @@ export class AuthService {
       .subscribe(
         data => {
           console.log("POST Request is successful ", data);
-          localStorage.setItem('token', data.token)
+          this.storageService.setToken(data.token)
+          // this.isLogged = of(true)
           this.router.navigate([''])
-
         },
         error => {
-
           console.log("Error", error);
-
         }
 
       );
@@ -47,17 +45,20 @@ export class AuthService {
       .subscribe(
         data => {
           console.log("POST Request is successful ", data);
-          localStorage.setItem('token', data.token)
+          this.storageService.setToken(data.token)
           this.router.navigate([''])
+
         },
         error => {
-
           console.log("Error", error);
-
         }
 
       );
 
+  }
+
+  isLogged(): Observable<boolean> {
+    return this.storageService.getToken() ? of(true) : of(false)
   }
 
 }
